@@ -11,7 +11,7 @@ public class Thirteen {
 		Thirteen thirteen = new Thirteen();
 		System.out.println(thirteen.sum());
 	}
-	
+
 	private String sum() {
 		parse();
 		BigInteger sum = BigInteger.ZERO;
@@ -36,7 +36,7 @@ public class Thirteen {
 			System.err.println("FileNotFoundException!");
 		}
 	}
-	
+
 	private class Node {
 		private BigInteger value;
 		private Node next;
@@ -44,17 +44,29 @@ public class Thirteen {
 		public Node() {
 			this(null, null);
 		}
-		
+
 		public Node(BigInteger value, Node next) {
 			this.value = value;
 			this.next = next;
 		}
-		
+
 		private Node add(BigInteger value, Node next) {
 			Node node = new Node();
 			node.value = value;
 			node.next = next;
 			return node;
+		}
+
+		public String toString() {
+			String result = "[";		
+			Node copy = this;
+			while (copy.next != null) {
+				result = result + copy.value + ",";
+				copy = copy.next;
+			}
+			result = result.substring(0, result.length() - 1);
+			result = result + "]";		
+			return result;
 		}
 	}
 }
